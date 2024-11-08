@@ -1,0 +1,30 @@
+/* src/components/ProfileDetailPage.css */
+
+.profile-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Full height to center vertically */
+    text-align: center; /* Center text horizontally */
+    background-color: var(--body-color); /* Optional: Use your body color */
+  }
+  
+  .profile-content {
+    background-color: var(--container-color); /* Background for the profile details */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
+  }
+  
+  .profile-img {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Keep the image circular */
+    border-radius: 50%; /* Circular image */
+    margin: 1rem 0; /* Space around the image */
+    margin-left: 1.8cm; /* Move the image 1.5 cm to the right */
+  }
+  .profile-email {
+    margin: 0.5rem 0; /* Space around email */
+  }
+  

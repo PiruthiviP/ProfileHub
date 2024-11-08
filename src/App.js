@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import ProfileDetailPage from './components/ProfileDetailPage';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      try {
+        const response = await fetch('https://randomuser.me/api?results=5');
+        const data = await response.json();
+        setProfiles(data.results);
+        console.log('Fetched profiles:', data.results); // Log the fetched profiles
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchProfiles();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage profiles={profiles} />} />
+        <Route path="/profile/:id" element={<ProfileDetailPage profiles={profiles} />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
